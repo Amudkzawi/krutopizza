@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Круто Пицца · Тобыл</title>
+<meta name="description" content="Круто Пицца в Тобыле: пицца 30 и 35 см, роллы, донеры, бургеры и кофе. Заказ онлайн через WhatsApp. ул. Новая, 58А.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Круто Пицца · Тобыл — заказ онлайн">
+<meta property="og:description" content="Пицца 30 и 35 см, роллы, донеры и бургеры. Закажите онлайн — самовывоз с ул. Новая, 58А или доставка.">
+<meta property="og:image" content="https://amudkzawi.github.io/krutopizza/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://amudkzawi.github.io/krutopizza/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* VOICE: районная пиццерия с характером — уверенно, по-свойски, без мультяшности
+   IDEA: их печатная доска меню — хвойно-зелёная, с оранжевыми ценами и капсом
+   PICTURE: настоящие фото еды и зала в рамках, как постеры у них на стене
+   COLOUR and TYPE: #213939 доска, #cc814a логотип, кирпичная стена #c8574a, полосы как в зале; Montserrat 800 капсом
+   LAYOUT: шапка, первый экран с логотипом и фото, хиты, меню-доска с корзиной, зал, отзывы, карта */
+:root{color-scheme:dark;--board:#213939;--board2:#2a4545;--line:#3b5656;--or:#cc814a;--or2:#e9a46c;--brick:#c8574a;--green:#1e5a46;--cream:#f6efe4;--ink:#f6efe4;--mute:#b9c4c0}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--board);color:var(--ink);font:16px/1.55 Montserrat,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-weight:900;line-height:1.05;text-wrap:balance;margin:0;text-transform:uppercase;letter-spacing:-.01em}
+a{color:inherit}img{display:block;max-width:100%}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--or2);outline-offset:2px}
+html{scroll-padding-top:130px;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,16px)}
+.band{padding:clamp(44px,6vw,88px) 0}
+.stripes{height:22px;background:repeating-linear-gradient(-62deg,var(--brick) 0 18px,#fff 18px 26px,var(--green) 26px 44px,#fff 44px 52px)}
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(33,57,57,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.top .logo img{height:50px;width:auto}
+.nav{display:flex;gap:22px;margin-left:auto}
+.nav a{text-decoration:none;color:var(--mute);font-weight:700;font-size:14px;text-transform:uppercase}.nav a:hover{color:var(--ink)}
+.cartbtn{background:var(--or);color:#1d1208;border:0;border-radius:12px;padding:10px 16px;min-height:44px;font-weight:800;display:flex;gap:10px;align-items:center;white-space:nowrap}
+.cartbtn i{font-style:normal;background:#1d1208;color:var(--or2);border-radius:8px;padding:1px 8px;font-size:13px}
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(28px,4vw,56px);padding-bottom:clamp(36px,5vw,72px)}
+.hero .bigLogo{width:min(380px,80%);height:auto;margin:0 0 18px -8px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.hero h1{font-size:clamp(34px,4.6vw,56px)}
+.hero h1 em{font-style:normal;color:var(--or)}
+.lead{font-size:18px;color:var(--mute);max-width:31em;margin:16px 0 26px;font-weight:500}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border-radius:14px;font-weight:800;text-decoration:none;text-transform:uppercase;font-size:15px;border:2px solid var(--or);white-space:nowrap}
+.btn.main{background:var(--or);color:#1d1208}.btn.main:hover{background:var(--or2);border-color:var(--or2)}
+.btn.ghost{color:var(--ink);border-color:rgba(246,239,228,.35)}.btn.ghost:hover{border-color:var(--ink)}
+.btn svg{width:20px;height:20px}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--board2);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600}
+.chip b{color:var(--or2)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--dot,#999)}
+.collage{position:relative;aspect-ratio:1/1.02}
+.frame{position:absolute;background:#fff;padding:10px;border-radius:6px;box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.frame img{width:100%;height:100%;object-fit:cover;border-radius:2px}
+.f1{left:0;top:0;width:68%;height:86%;transform:rotate(-2.5deg)}
+.f2{right:0;bottom:0;width:50%;height:56%;transform:rotate(3deg)}
+.price-tag{position:absolute;left:52%;top:4%;background:var(--brick);color:#fff;border-radius:999px;width:124px;height:124px;display:grid;place-content:center;text-align:center;font-weight:800;line-height:1.1;font-size:13px;text-transform:uppercase;transform:rotate(8deg);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.price-tag b{font-size:22px;display:block;white-space:nowrap}
+/* section heads */
+.sh{display:flex;justify-content:space-between;align-items:end;gap:18px;flex-wrap:wrap;margin-bottom:26px}
+h2{font-size:clamp(30px,4vw,46px)}
+h2 small{display:block;font-size:15px;color:var(--or2);letter-spacing:0;margin-bottom:8px;font-weight:800}
+.sh p{margin:0;color:var(--mute);max-width:34em}
+/* hits */
+.hits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.hit{background:var(--cream);color:#1f2a2a;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.hit img{aspect-ratio:4/3;width:100%;object-fit:cover}
+.hit>div{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.hit h3{font-size:20px}
+.hit p{margin:0;color:#5b6563;font-size:14.5px;flex:1}
+.hit .buy{flex-direction:row!important;display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.hit .pr{font-weight:900;font-size:22px;color:var(--brick);white-space:nowrap}
+.add{background:var(--board);color:var(--cream);border:0;border-radius:12px;padding:10px 16px;min-height:44px;font-weight:800;font-size:14px;text-transform:uppercase;white-space:nowrap}
+.add.ok{background:#3d8b5a}
+/* menu board */
+.menu{background:var(--board2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tabs{position:sticky;top:68px;z-index:20;background:var(--board2);display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none;border-bottom:1px solid var(--line);margin-bottom:8px}
+.tabs button{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;padding:9px 16px;min-height:44px;white-space:nowrap;font-weight:700;text-transform:uppercase;font-size:13.5px}
+.tabs button[aria-pressed=true]{background:var(--or);color:#1d1208;border-color:var(--or)}
+.search{background:var(--board);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:10px 14px;font:16px Montserrat,sans-serif;min-height:46px;width:min(320px,100%)}
+.board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;padding:18px 0;border-bottom:1px dashed var(--line);align-items:start}
+.row h3{font-size:16px;font-weight:800}
+.row p{margin:4px 0 0;color:var(--mute);font-size:14px}
+.row .r{display:flex;align-items:center;gap:12px}
+.row .pr{color:var(--or2);font-weight:800;font-size:19px;white-space:nowrap}
+.plus{width:44px;height:44px;border-radius:12px;border:2px solid var(--or);background:transparent;color:var(--or2);font-size:22px;font-weight:700;line-height:1}
+.plus.ok{background:#3d8b5a;border-color:#3d8b5a;color:#fff}
+.vars{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.vars button{border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:8px;padding:5px 10px;min-height:34px;font-size:13px;font-weight:700}
+.vars button[aria-pressed=true]{border-color:var(--or);color:var(--or2)}
+.note{font-size:13px;color:var(--mute);margin-top:18px}
+.empty{color:var(--mute);padding:30px 0}
+/* hall */
+.hall{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-auto-rows:clamp(200px,22vw,290px);gap:18px}
+.hall figure{margin:0;border-radius:20px;overflow:hidden;position:relative}
+.hall img{width:100%;height:100%;object-fit:cover}
+.hall .tall{grid-row:span 2}
+.hall figcaption{position:absolute;left:14px;bottom:14px;background:rgba(33,57,57,.88);padding:7px 12px;border-radius:10px;font-size:13px;font-weight:700}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.rev{background:var(--cream);color:#1f2a2a;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;margin:0}
+.rev blockquote{margin:0;font-size:15.5px;font-weight:500;flex:1}
+.rev figcaption{font-size:13px;color:#6d7473;font-weight:600}
+.stars{color:var(--brick);letter-spacing:2px}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font-size:60px;font-weight:900;color:var(--or);line-height:1}
+/* contacts */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;align-items:stretch}
+.info{display:grid;gap:20px;align-content:start}
+.info span{display:block;color:var(--mute);font-size:13px;font-weight:700;text-transform:uppercase}
+.info b{font-size:20px;font-weight:700}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}.hours td:last-child{text-align:right;white-space:nowrap}
+.hours tr.today td{color:var(--or2);font-weight:800}
+.map{position:relative;border-radius:20px;overflow:hidden;min-height:340px;display:block;border:1px solid var(--line)}
+.map img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.map .pin{position:absolute;left:49%;top:48%;transform:translate(-50%,-100%);background:var(--board);color:var(--cream);padding:10px 14px;border-radius:12px;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.map .pin::after{content:"";position:absolute;left:50%;bottom:-7px;width:14px;height:14px;background:var(--board);transform:translateX(-50%) rotate(45deg)}
+.map .open{position:absolute;right:14px;bottom:14px}
+footer{background:#1a2e2e;color:var(--mute);font-size:14px;padding:28px 0 96px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer img{height:42px;width:auto}
+/* sticky mobile bar */
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:35;display:none}
+.mbar button{width:100%;min-height:56px;border:0;border-radius:16px;background:var(--or);color:#1d1208;font-weight:800;font-size:16px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;box-shadow:0 10px 30px rgba(0,0,0,.4);text-transform:uppercase}
+body.has .mbar{display:block}
+/* drawer */
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;display:none}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);background:var(--board);border-left:1px solid var(--line);z-index:41;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+body.open .shade{display:block}body.open .drawer{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dh h3{font-size:22px}
+.x{background:none;border:0;color:var(--ink);font-size:28px;min-width:44px;min-height:44px}
+.lines{flex:1;overflow-y:auto;padding:6px 20px}
+.line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600}
+.line small{color:var(--mute);font-weight:500}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--board2);color:var(--ink);font-size:18px}
+.form{padding:14px 20px 18px;border-top:1px solid var(--line);display:grid;gap:10px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.seg button{min-height:44px;border-radius:12px;border:1px solid var(--line);background:var(--board2);color:var(--ink);font-weight:700}
+.seg button[aria-pressed=true]{border-color:var(--or);color:var(--or2)}
+.form input,.form textarea{width:100%;background:var(--board2);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:11px 12px;font:16px Montserrat,sans-serif}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:700}
+.total b{color:var(--or2);font-weight:900}
+.msg{font-size:12.5px;color:var(--mute);margin:0}
+@media(max-width:960px){.revs{grid-template-columns:repeat(2,minmax(0,1fr))}.hits{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.hits .hit:last-child{grid-column:1/-1}}
+@media(max-width:860px){.nav{display:none}.cartbtn{margin-left:auto}.hero .wrap,.contact{grid-template-columns:minmax(0,1fr)}.board{grid-template-columns:minmax(0,1fr)}.collage{max-width:520px;width:100%;margin:0 auto}.hall{grid-template-columns:minmax(0,1fr)}.hall .tall{grid-row:auto}.hall{grid-auto-rows:240px}}
+@media(max-width:600px){.hits,.revs{grid-template-columns:minmax(0,1fr)}.hits .hit:last-child{grid-column:auto}.hero .bigLogo{width:250px}.price-tag{width:112px;height:112px;font-size:11px;left:58%}.price-tag b{font-size:17px}.top .cartbtn{display:none}.top .logo{margin:0 auto}.btn{flex:1}}
+
+/* product grid like Dodo */
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 18px}
+.pc{display:flex;flex-direction:column;background:var(--board);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .15s,border-color .15s}
+.pc:hover{transform:translateY(-3px);border-color:var(--or)}
+.pc .ph{aspect-ratio:1/1;overflow:hidden;background:#173030}
+.pc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.pc:hover .ph img{transform:scale(1.05)}
+.pc .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pc h3{font-size:16px;font-weight:800}
+.pc p{margin:0;color:var(--mute);font-size:13.5px;flex:1}
+.pc .ft{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:4px}
+.pc .pr{color:var(--or2);font-weight:900;font-size:19px;white-space:nowrap}
+.pick{background:var(--or);color:#1d1208;border:0;border-radius:999px;padding:10px 18px;min-height:44px;font-weight:800;font-size:14px;white-space:nowrap}
+.pick:hover{background:var(--or2)}.pick.ok{background:#3d8b5a;color:#fff}
+.seg2{display:flex;background:#173030;border-radius:999px;padding:3px}
+.seg2 button{flex:1;border:0;background:transparent;color:var(--mute);border-radius:999px;padding:6px 8px;min-height:34px;font-size:13px;font-weight:700;white-space:nowrap}
+.seg2 button[aria-pressed=true]{background:var(--cream);color:#1f2a2a}
+.badge{position:absolute;left:12px;top:12px;background:var(--brick);color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;text-transform:uppercase}
+.pc .ph{position:relative}
+.stock{font-size:12px;color:var(--mute);margin-top:16px}
+/* combos */
+.combos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cb{position:relative;border-radius:22px;overflow:hidden;min-height:260px;display:flex;align-items:end;background:#000}
+.cb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.cb div{position:relative;padding:20px;display:grid;gap:6px;width:100%;background:linear-gradient(transparent,rgba(0,0,0,.75) 45%)}
+.cb h3{font-size:22px}.cb p{margin:0;font-size:14px;color:#e9e3d8}
+.cb .ft{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.cb .pr{font-weight:900;font-size:24px;color:var(--or2)}
+/* checkout */
+.field label{display:block;font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;margin-bottom:5px}
+.form input.bad{border-color:#e0664f}
+.err{color:#ff8b78;font-size:13px;margin:0;min-height:0}
+.done{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:none;place-items:center;padding:16px}
+body.ok .done{display:grid}
+.done .card{background:var(--cream);color:#1f2a2a;border-radius:24px;padding:30px 26px;max-width:420px;width:100%;text-align:center;display:grid;gap:12px}
+.done .tick{width:72px;height:72px;border-radius:50%;background:#3d8b5a;color:#fff;font-size:38px;display:grid;place-items:center;margin:0 auto;animation:pop .35s ease-out}
+@keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+.done h3{font-size:24px}.done p{margin:0;color:#4d5655}
+.done .num{font-weight:900;font-size:30px;color:var(--brick)}
+/* staff panel */
+#panel{display:none}
+body.staff #site{display:none}body.staff #panel{display:block}body.staff .mbar,body.staff .drawer,body.staff .shade{display:none!important}
+.ptop{background:#1a2e2e;border-bottom:1px solid var(--line)}
+.ptop .wrap{display:flex;align-items:center;gap:16px;min-height:68px;flex-wrap:wrap;padding-block:8px}
+.ptop img{height:44px}
+.ptop h1{font-size:20px}
+.ptop .sp{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:24px 0}
+.stat{background:var(--board2);border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat b{display:block;font-size:28px;font-weight:900;color:var(--or2)}
+.stat span{color:var(--mute);font-size:13px;font-weight:600}
+.orders{display:grid;gap:14px;padding-bottom:60px}
+.ord{background:var(--cream);color:#1f2a2a;border-radius:18px;padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 20px;border-left:8px solid var(--st,#999)}
+.ord.new{animation:flash 1.2s ease-out 2}
+@keyframes flash{50%{box-shadow:0 0 0 6px rgba(204,129,74,.6)}}
+.ord h3{font-size:19px}
+.ord .meta{color:#5b6563;font-size:14px;font-weight:600}
+.ord ul{margin:6px 0 0;padding-left:18px;font-size:15px}
+.ord .sum{font-weight:900;font-size:22px;color:var(--brick);text-align:right;white-space:nowrap}
+.ord .acts{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ord .acts button{min-height:44px;border-radius:12px;border:0;padding:8px 16px;font-weight:800;background:var(--board);color:var(--cream)}
+.ord .acts .tel{color:#1f2a2a;font-weight:700;margin-right:auto}
+.pill{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--st);color:#fff;margin-left:8px;vertical-align:middle}
+.pempty{background:var(--board2);border:1px dashed var(--line);border-radius:18px;padding:40px 20px;text-align:center;color:var(--mute)}
+@media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.combos{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.pc .bd{padding:12px}.pc h3{font-size:14.5px}.pc p{font-size:12.5px}.pc .ft{flex-direction:column;align-items:stretch}.pc .pr{font-size:17px}.pick{padding:8px 12px}.ord{grid-template-columns:minmax(0,1fr)}.ord .sum{text-align:left}.stat b{font-size:22px}}
+</style>
+</head>
+<body>
+<style>@media(min-width:601px){.mbar{display:none!important}}</style>
+<div id="site">
+<header class="top"><div class="wrap">
+  <a class="logo" href="#" aria-label="Круто Пицца — наверх"><img src="img/logo.png" alt="Круто Пицца" width="89" height="50"></a>
+  <nav class="nav"><a href="#menu">Меню</a><a href="#combo">Комбо</a><a href="#hall">Зал</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
+  <button class="cartbtn" id="openCart">Корзина <i id="cnt">0</i></button>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap">
+  <div>
+    <img class="bigLogo" src="img/logo.png" alt="Логотип Круто Пицца" width="560" height="316">
+    <h1>Горячая пицца и донеры <em>в Тобыле</em></h1>
+    <p class="lead">Выберите блюда, нажмите «Оформить» — заказ сразу уйдёт на кухню. Самовывоз с Новой, 58А или доставка.</p>
+    <div class="cta">
+      <a class="btn main" href="#menu">Заказать онлайн</a>
+      <a class="btn ghost" href="#combo">Комбо со скидкой</a>
+    </div>
+    <div class="facts">
+      <span class="chip"><span class="dot" id="dot"></span><span id="status">Время работы</span></span>
+      <span class="chip"><b>4,9 ★</b> 248 оценок в 2GIS</span>
+      <span class="chip">ул. Новая, 58А</span>
+    </div>
+  </div>
+  <div class="collage">
+    <div class="frame f1"><img src="img/hero.jpg" alt="Пицца пепперони"></div>
+    <div class="frame f2"><img src="img/interior.jpg" alt="Зал Круто Пиццы в Тобыле" style="object-position:60% 70%"></div>
+    <div class="price-tag">пицца<b>от 2 500 ₸</b>30 см</div>
+  </div>
+</div><div class="stripes" aria-hidden="true"></div></section>
+
+<section class="menu band" id="menu"><div class="wrap">
+  <div class="sh"><h2><small>140+ позиций</small>Меню</h2><input class="search" id="q" type="search" placeholder="Найти: пепперони, латте…" aria-label="Поиск по меню"></div>
+  <div class="tabs" id="tabs" role="toolbar" aria-label="Разделы меню"></div>
+  <div class="pgrid" id="grid"></div>
+  <p class="note">Цены в тенге. Безлактозное молоко к кофе +650 ₸. Алкоголя в меню нет.</p>
+</div></section>
+
+<section class="band" id="combo"><div class="wrap">
+  <div class="sh"><h2><small>Выгоднее, чем по отдельности</small>Комбо на компанию</h2></div>
+  <div class="combos">
+    <article class="cb"><img src="img/s-pepperoni.jpg" alt=""><div><h3>3 пиццы · 35 см</h3><p>Пепперони, Сырная, Курица с грибами</p><div class="ft"><span class="pr">9 790 ₸</span><button class="pick" data-c="Комбо" data-i="1">В корзину</button></div></div></article>
+    <article class="cb"><img src="img/s-doner.jpg" alt=""><div><h3>Круто-сет №1</h3><p>Пепперони 30 см, 2 донера, наггетсы, фри, напиток 1 л</p><div class="ft"><span class="pr">7 290 ₸</span><button class="pick" data-c="Комбо" data-i="3">В корзину</button></div></div></article>
+    <article class="cb"><img src="img/s-set.jpg" alt=""><div><h3>Сет Лососевый · 40 шт</h3><p>Филадельфия, чизмаки, запечённый и темпура лосось</p><div class="ft"><span class="pr">11 090 ₸</span><button class="pick" data-c="Сеты" data-i="5">В корзину</button></div></div></article>
+  </div>
+</div></section>
+
+<section class="band menu" id="hall"><div class="wrap">
+  <div class="sh"><h2><small>Приходите в гости</small>Уютный зал на Новой</h2><p>Светлый зал, кирпично-красные стены и постеры с нашим меню. Можно поесть на месте или забрать с собой.</p></div>
+  <div class="hall">
+    <figure class="tall"><img src="img/interior.jpg" alt="Зал Круто Пиццы: столы, белые стулья, полосатая стена"><figcaption>Зал</figcaption></figure>
+    <figure><img src="img/wall.jpg" alt="Постеры с меню на кирпичной стене"><figcaption>Наша стена</figcaption></figure>
+    <figure><img src="img/sign.jpg" alt="Вывеска Круто Пицца на фасаде"><figcaption>Ищите вывеску</figcaption></figure>
+  </div>
+</div></section>
+
+<div class="stripes" aria-hidden="true"></div>
+<section class="band" id="reviews"><div class="wrap">
+  <div class="sh"><div class="score"><b>4,9</b><h2><small>248 оценок · 172 отзыва в 2GIS</small>Что говорят гости</h2></div><a class="btn ghost" href="https://2gis.kz/kostanay/firm/70000001103334913/tab/reviews" target="_blank" rel="noopener">Все отзывы в 2GIS</a></div>
+  <div class="revs" id="rev"></div>
+</div></section>
+
+<section class="band menu" id="contacts"><div class="wrap contact">
+  <div class="info">
+    <h2><small>Контакты</small>Как нас найти</h2>
+    <div><span>Адрес</span><b>Тобыл, ул. Новая, 58А</b></div>
+    <div><span>Телефон / WhatsApp</span><b><a href="https://wa.me/77070473700" target="_blank" rel="noopener">+7 707 047 3700</a></b></div>
+    <div><span>Instagram</span><b><a href="https://www.instagram.com/krutopizza.tobyl/" target="_blank" rel="noopener">@krutopizza.tobyl</a></b></div>
+    <table class="hours" id="hours"></table>
+  </div>
+  <a class="map" href="https://2gis.kz/kostanay/firm/70000001103334913" target="_blank" rel="noopener" aria-label="Открыть Круто Пиццу в 2GIS">
+    <img src="img/map.jpg" alt="Карта 2GIS: Круто Пицца, Тобыл, ул. Новая, 58А">
+    <span class="pin">Круто Пицца</span>
+    <span class="btn main open">Маршрут в 2GIS</span>
+  </a>
+</div></section>
+
+<footer><div class="wrap"><img src="img/logo.png" alt="Круто Пицца" width="74" height="42"><span>Тобыл, ул. Новая, 58А · пн–пт 11:00–22:30, сб–вс 11:00–23:00</span><a href="#orders" style="color:var(--mute)">Для персонала: панель заказов →</a></div></footer>
+</div>
+
+<div id="panel">
+  <header class="ptop"><div class="wrap">
+    <img src="img/logo.png" alt="Круто Пицца" width="78" height="44"><h1>Панель заказов</h1>
+    <div class="sp"><button class="btn ghost" id="demoOrder" style="min-height:44px;padding:8px 16px">+ Тестовый заказ</button><a class="btn main" href="#" style="min-height:44px;padding:8px 16px">← На сайт</a></div>
+  </div></header>
+  <div class="wrap">
+    <div class="stats"><div class="stat"><b id="stNew">0</b><span>новых</span></div><div class="stat"><b id="stWork">0</b><span>в работе</span></div><div class="stat"><b id="stSum">0 ₸</b><span>выручка за сегодня</span></div></div>
+    <div class="orders" id="orders"></div>
+  </div>
+</div>
+
+<div class="mbar"><button id="mbar"><span>Корзина · <span id="mcnt">0</span></span><span id="msum">0 ₸</span></button></div>
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Корзина">
+  <div class="dh"><h3>Ваш заказ</h3><button class="x" id="closeCart" aria-label="Закрыть">×</button></div>
+  <div class="lines" id="lines"></div>
+  <form class="form" id="form" novalidate>
+    <div class="seg" id="mode"><button type="button" data-m="Самовывоз" aria-pressed="true">Самовывоз</button><button type="button" data-m="Доставка" aria-pressed="false">Доставка</button></div>
+    <input id="name" placeholder="Ваше имя" autocomplete="name">
+    <input id="phone" type="tel" inputmode="tel" placeholder="Телефон: +7 7__ ___ __ __" autocomplete="tel">
+    <input id="addr" placeholder="Улица, дом, квартира" autocomplete="street-address" hidden>
+    <div class="seg" id="pay"><button type="button" data-p="Kaspi" aria-pressed="true">Kaspi перевод</button><button type="button" data-p="Наличные" aria-pressed="false">Наличные</button></div>
+    <input id="comment" placeholder="Комментарий: без лука, к 19:00…">
+    <p class="err" id="err"></p>
+    <div class="total"><span>Итого</span><b id="sum">0 ₸</b></div>
+    <button class="btn main" id="send" type="submit">Оформить заказ</button>
+  </form>
+</aside>
+<div class="done" id="done" role="dialog" aria-label="Заказ оформлен"><div class="card">
+  <div class="tick">✓</div><h3>Заказ принят!</h3><div class="num" id="dnum"></div>
+  <p id="dtext">Кухня уже получила заказ. Мы перезвоним, чтобы подтвердить время.</p>
+  <button class="btn main" id="dclose">Отлично</button>
+</div></div>
+<script>
+{
+const P=(n,d,a,b)=>({n,d,v:[['30 см',a],['35 см',b]]});
+const S=(n,d,p)=>({n,d,v:[['',p]]});
+const M={
+'Пицца':[P('Фирменная','Говяжий фарш, моцарелла, томатный соус, орегано',3290,3690),P('Маргарита','Моцарелла, помидоры, томатный соус, орегано',2500,2900),P('Пепперони','Пепперони, моцарелла, томатный соус, орегано',3190,3590),P('Дабл пепперони','Двойная пепперони, моцарелла, томатный соус',3490,3890),P('Пепперони с грибами','Пепперони, шампиньоны, моцарелла, томатный соус',3390,3790),P('Пепперони пикантная','Пепперони, халапеньо, моцарелла, томатный соус',2950,3350),P('Ветчина с сыром','Ветчина, моцарелла, томатный соус, орегано',3390,3790),P('Ветчина и грибы','Ветчина, шампиньоны, моцарелла, томатный соус',3350,3750),P('Сырная','Гауда, моцарелла, фета, сырный и томатный соус',2990,3390),P('4 сезона','Грибы, помидоры, курица, салями, оливки, томатный соус',3890,4290),P('Курица с грибами','Куриное филе, шампиньоны, моцарелла, фирменный томатный соус',3390,3790),P('Запечённая курица','Курица, моцарелла, томатный соус, орегано',3290,3690),P('Грибная','Шампиньоны, моцарелла, томатный соус',3290,3690),P('Охотничьи колбаски','Охотничьи колбаски, моцарелла, томатный соус',3290,3690),P('Охотничьи с солёными огурцами','Колбаски, солёные огурцы, моцарелла, томатный соус',3250,3550),P('Вегетарианская','Моцарелла, помидоры, сладкий перец, красный лук, шампиньоны, оливки',3390,3790),P('Филадельфия','Сёмга, моцарелла, творожный сыр',3990,4390),P('Kids','Картофель фри, сосиски, моцарелла, томатный и сырный соус',2890,3290),P('Мексиканская','Говядина, халапеньо, моцарелла, кукуруза, помидоры, соус барбекю',3590,3990),P('Гранд микс','Ветчина, пепперони, охотничьи колбаски, моцарелла, шампиньоны',3990,4390),P('Комбинированная','Курица, шампиньоны, карбонат, оливки, томатный соус',3890,4290),P('Гавайская','Курица со специями, ананасы, томатный соус',3690,4090),P('Цезарь','Курица, айсберг, помидоры, сухари, соус цезарь, моцарелла, пармезан',3590,3990)],
+'Комбо':[S('Дабл пицца','Сырная 30 см + пепперони 30 см, напиток 1 л, фри, соус',7290),S('3 пиццы','Пепперони, сырная, курица с грибами — 35 см',9790),S('5 пицц','Маргарита, пепперони, ветчина с сыром, сырная, 4 сезона — 35 см',15990),S('Круто-сет №1','Пепперони 30 см, 2 донера, наггетсы, фри, напиток 1 л, 2 соуса',7290),S('Круто-сет №2','Пепперони и сырная 30 см, 2 донера, 10 крылышек, 2 фри, 2 л напитка, 3 соуса',13990),S('Комбо с пиццей','Пепперони 30 см, напиток 0,5 л, фри, соус',4190),S('Комбо куриный','Круто-бургер куриный, напиток 0,5 л, фри, соус',3390),S('Комбо говяжий','Круто-бургер говяжий, напиток 0,5 л, фри, соус',3590),S('Комбо чикен','Чикен бургер, напиток 0,5 л, фри, соус',3090),S('Комбо донер','Донер куриный, напиток 0,5 л, фри, соус',2590),S('Комбо детский','Детский бургер, напиток 0,5 л, фри, соус',3290)],
+'Донеры':[S('Донер с курицей','',1390),S('Донер с говядиной','',1890),S('С курицей и овощами','Курица, пекинская капуста, фри, помидоры, огурцы, морковь по-корейски, соус',1590),S('С говядиной и овощами','Говяжий фарш, пекинская капуста, фри, помидоры, огурцы, морковь по-корейски',2090),S('Донер MIX','',1790),S('Вегетарианский','',1390),S('С курицей острый','',1490),S('С говядиной острый','',1990),S('С курицей сырный','',1690),S('С говядиной сырный','',2190),S('С наггетсами','',1490),S('С наггетсами и сыром','',1690),S('Жареный с курицей','',1890),S('Жареный с говядиной','',2290),S('В лепёшке с курицей','',1590),S('В лепёшке с говядиной','',1990)],
+'Бургеры':[S('Круто-бургер куриный','Булка с кунжутом, куриная котлета, фирменный соус, огурцы, помидор, лук',2490),S('Круто-бургер говяжий','Булка с кунжутом, говяжья котлета, фирменный соус, огурцы, помидор, лук',2690),S('Дабл куриный','Двойная куриная котлета, фирменный соус, овощи',3990),S('Дабл говяжий','Двойная говяжья котлета, фирменный соус, овощи',4290),S('Круто-чикен','Хрустящее куриное филе, фирменный соус, огурцы, помидор, лук',1990),S('Детский бургер','Куриная котлета, фирменный соус, огурцы',2290),S('Круто-сэндвич','Запечённое филе курицы, огурцы, помидоры, пекинская капуста',1200)],
+'Роллы':[S('Филадельфия','Лосось, сливочный сыр, огурец',2890),S('Калифорния','Снежный краб, сливочный сыр, масаго',2490),S('Запечённая курица','Курица, сливочный сыр, сырная шапка, унаги',2190),S('Запечённая креветка','Темпура креветка, сырная шапка, унаги, масаго',2490),S('Запечённый сегун','Лосось, снежный краб, сырная шапка, унаги',2890),S('Запечённый краб','Снежный краб, сливочный сыр, сырная шапка',2290),S('Запечённый лосось','Лосось, сливочный сыр, сырная шапка, унаги',2590),S('Запечённый угорь','Угорь, сливочный сыр, сырная шапка, унаги',2590),S('Темпура лосось','Лосось, сливочный сыр, сухари панко',2590),S('Темпура краб','Снежный краб, сливочный сыр, панко',2290),S('Темпура курица','Курица, сливочный сыр, панко',2190),S('Темпура угорь','Угорь, сливочный сыр, панко',2590),S('Чизмаки лосось','',2490),S('Чизмаки краб','',1890),S('Чизмаки угорь','',2490),S('Чизмаки огурец','',1400),S('Хосомаки лосось','',2190),S('Хосомаки краб','',1100),S('Хосомаки огурец','',1100)],
+'Сеты':[S('Сет Темпура · 24 шт','Темпура краб, лосось, курица',6490),S('Сет Запечённый · 24 шт','Запечённый краб, лосось, сырный ролл',6990),S('Сет Холодный · 32 шт','Филадельфия, Калифорния, чизмаки лосось, хосомаки огурец',7290),S('Сет 50/50 · 32 шт','Запечённая курица, запечённый краб, Филадельфия, Калифорния',8890),S('Сет Удобный · 32 шт','Роллы + пицца пепперони 30 см + напиток 1 л',11090),S('Сет Лососевый · 40 шт','Филадельфия, хосомаки и чизмаки лосось, запечённый лосось, темпура лосось',11090),S('Сет Побольше · 48 шт','Филадельфия, Калифорния, темпура краб и угорь, запечённые курица и креветка',13190)],
+'Фастфуд':[S('Картофель фри 90 г','',700),S('Большой фри 150 г','',1190),S('Картофель по-деревенски 90 г','',890),S('Биг по-деревенски 150 г','',1290),S('Сырные палочки','',1390),{n:'Наггетсы',d:'',v:[['6 шт',990],['9 шт',1390]]},{n:'Стрипсы',d:'',v:[['6 шт',1290],['9 шт',1690]]},{n:'Крылышки',d:'',v:[['10 шт',2490],['15 шт',3390],['20 шт',4190],['30 шт',5990],['40 шт',7990]]},{n:'Соус',d:'',v:[['Сырный',200],['Кетчуп',200],['Барбекю',200],['Фирменный',350],['Халапеньо',250]]}],
+'Кофе':[{n:'Американо',d:'',v:[['200',820],['300',890],['400',960]]},{n:'Капучино',d:'',v:[['200',890],['300',990],['400',1090]]},{n:'Латте',d:'',v:[['200',940],['300',1020],['400',1190]]},{n:'Мокко',d:'',v:[['200',990],['300',1090],['400',1190]]},{n:'Раф',d:'',v:[['300',1190],['400',1290]]},S('Флэт уайт','200 мл',900),S('Эспрессо','30 мл',790),{n:'Ice-латте',d:'',v:[['300',1090],['400',1290],['500',1390]]},{n:'Бамбл',d:'',v:[['300',1190],['400',1290],['500',1390]]},{n:'Фраппучино',d:'',v:[['300',1490],['400',1590],['500',1690]]},{n:'Матча-латте',d:'',v:[['200',990],['300',1090]]},S('Какао','400 мл',990),S('Горячий шоколад','400 мл',990)],
+'Напитки':[{n:'Coca-Cola / Fanta / Sprite / Pepsi',d:'',v:[['0,5 л',690],['1 л',860]]},{n:'Лимонад',d:'Мохито, ягодный, цитрусовый, манго-маракуйя, мохито-гранат, -клубника, -малина',v:[['0,5 л',890],['1 л',1490]]},S('Молочный коктейль','0,5 л: ванильный, шоколадный, малиновый, клубничный, орео, банановый',1100),S('Смузи','0,3 л: киви-банан, киви-яблоко, банан-апельсин, банан-яблоко, клубника-банан',1100),{n:'Чай чёрный / зелёный',d:'',v:[['200 мл',250],['800 мл',800]]},{n:'Чай ягодный / ташкентский / облепиховый',d:'Также вишнёвый и малиновый',v:[['200 мл',450],['800 мл',1600]]},{n:'Чай зимний',d:'Каркаде, мёд, корица, ваниль, имбирь, гвоздика, кардамон',v:[['200 мл',650],['800 мл',1900]]},S('Сок натуральный 0,95 л','',1100)]
+};
+const R=[['Очень вкусно и уютно. Меню обширное. Донеры просто огромные, а чай с насыщенным вкусом. Цены приемлемые.','Елена К.'],['Крылышки изумительные — нет столько кляра, как в других местах. Донер очень вкусный.','Юлия К.'],['Купили пиццу домой, очень вкусная, тесто обалденное.','Людмила Л.'],['Были с семьёй, прекрасный приветливый персонал, ушли сытые и довольные.','Валюшка К.']];
+const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString('ru-RU').replace(/\s/g,' ')+' ₸';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let cat='Пицца',sel={},cart=store.get('kp-cart',[]),mode='Самовывоз',pay='Kaspi';
+const unit=c=>c==='Кофе'?' мл':'';
+const HIT=['Пепперони','Гавайская','Фирменная','Донер с говядиной и овощами','Круто-бургер говяжий','Филадельфия','Крылышки'];
+function pic(c,n){const s=n.toLowerCase(),has=w=>s.includes(w);
+  if(c==='Пицца'||(c==='Комбо'&&has('пицц'))){if(has('маргарит')||has('вегетар'))return'margherita';if(has('гавай'))return'hawaii';if(has('гриб')&&!has('пеппер')||has('комбинир'))return'ham-mush';if(has('пеппер'))return'pepperoni';if(has('сыр')||has('kids')||has('филадельф')||has('цезар')||has('запеч'))return'cheese';return'meat'}
+  if(c==='Комбо'){if(has('сет')||has('донер'))return'doner';if(has('чикен')||has('куриный')||has('детск'))return'chicken-burger';return'burger'}
+  if(c==='Донеры')return /овощ|лепёш|вегет|mix/i.test(n)?'doner2':'doner';
+  if(c==='Бургеры')return has('дабл')?'double':has('говяж')?'burger':'chicken-burger';
+  if(c==='Роллы')return has('лосос')||has('филадельф')?'phila':'rolls';
+  if(c==='Сеты')return has('лосос')||has('холодн')?'phila':has('удобн')||has('побольше')?'set':'rolls';
+  if(c==='Фастфуд')return has('крыл')?'wings':has('наггет')||has('стрипс')?'wings2':'fries';
+  if(c==='Кофе')return /ice|бамбл|фрапп|глясе|орео/i.test(n)?'icelatte':'latte';
+  if(c==='Напитки')return has('чай')?'tea':'lemonade';return'pepperoni'}
+$('#tabs').innerHTML=Object.keys(M).map(k=>`<button aria-pressed="${k===cat}" data-c="${k}">${k}</button>`).join('');
+function card(it,c,i){const k=c+'|'+i,s=sel[k]||0,many=it.v.length>1,pizza=c==='Пицца';
+  return `<article class="pc"><div class="ph"><img src="img/s-${pic(c,it.n)}.jpg" alt="${esc(it.n)}" loading="lazy">${HIT.includes(it.n)?'<span class="badge">Хит</span>':''}</div><div class="bd"><h3>${esc(it.n)}</h3>${it.d?`<p>${esc(it.d)}</p>`:'<p></p>'}${many&&it.v.length<=3?`<div class="seg2">${it.v.map((v,j)=>`<button data-k="${k}" data-j="${j}" aria-pressed="${j===s}">${esc(v[0])}${unit(c)}</button>`).join('')}</div>`:many?`<div class="vars">${it.v.map((v,j)=>`<button data-k="${k}" data-j="${j}" aria-pressed="${j===s}">${esc(v[0])}</button>`).join('')}</div>`:''}<div class="ft"><span class="pr">${fmt(it.v[s][1])}</span><button class="pick" data-c="${c}" data-i="${i}">В корзину</button></div></div></article>`}
+function grid(){
+  const q=$('#q').value.trim().toLowerCase();
+  const list=q?Object.entries(M).flatMap(([c,a])=>a.map((it,i)=>({it,c,i}))).filter(o=>(o.it.n+' '+o.it.d).toLowerCase().includes(q)):M[cat].map((it,i)=>({it,c:cat,i}));
+  $('#grid').innerHTML=list.length?list.map(o=>card(o.it,o.c,o.i)).join(''):'<p class="empty">Ничего не нашли. Попробуйте другое слово.</p>';
+}
+function total(){return cart.reduce((a,l)=>a+l.q*l.p,0)}
+function renderCart(){
+  const n=cart.reduce((a,l)=>a+l.q,0),sum=total();
+  $('#cnt').textContent=n;$('#mcnt').textContent=n;$('#sum').textContent=fmt(sum);$('#msum').textContent=fmt(sum);
+  document.body.classList.toggle('has',n>0);
+  $('#lines').innerHTML=cart.length?cart.map((l,i)=>`<div class="line"><div>${esc(l.n)}${l.v?` <small>· ${esc(l.v)}</small>`:''}<br><small>${fmt(l.p)}</small></div><div class="qty"><button type="button" data-d="${i}" data-s="-1" aria-label="Меньше">−</button><span>${l.q}</span><button type="button" data-d="${i}" data-s="1" aria-label="Больше">+</button></div></div>`).join(''):'<p class="empty">Корзина пустая. Добавьте что-нибудь из меню.</p>';
+  $('#send').disabled=!cart.length;$('#send').style.opacity=cart.length?1:.45;
+  store.set('kp-cart',cart);
+}
+function addItem(c,i,btn){
+  const it=M[c][+i],s=sel[c+'|'+i]||0,vn=it.v[s][0]?it.v[s][0]+unit(c):'';
+  const f=cart.find(l=>l.n===it.n&&l.v===vn);f?f.q++:cart.push({n:it.n,v:vn,p:it.v[s][1],q:1});
+  renderCart();const t=btn.textContent;btn.textContent='✓ Добавлено';btn.classList.add('ok');setTimeout(()=>{btn.textContent=t;btn.classList.remove('ok')},900);
+}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cat=b.dataset.c;$('#q').value='';document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));grid()});
+$('#q').addEventListener('input',grid);
+$('#grid').addEventListener('click',e=>{
+  const v=e.target.closest('[data-k]');if(v){sel[v.dataset.k]=+v.dataset.j;grid();return}
+  const a=e.target.closest('.pick');if(a)addItem(a.dataset.c,a.dataset.i,a);
+});
+document.querySelectorAll('.cb .pick').forEach(b=>b.addEventListener('click',()=>addItem(b.dataset.c,b.dataset.i,b)));
+$('#lines').addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b)return;const l=cart[+b.dataset.d];l.q+= +b.dataset.s;if(l.q<1)cart.splice(+b.dataset.d,1);renderCart()});
+$('#mode').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mode=b.dataset.m;document.querySelectorAll('#mode button').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#addr').hidden=mode!=='Доставка'});
+$('#pay').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;pay=b.dataset.p;document.querySelectorAll('#pay button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+$('#phone').addEventListener('input',e=>{let d=e.target.value.replace(/\D/g,'');if(d.startsWith('8'))d='7'+d.slice(1);if(d&&!d.startsWith('7'))d='7'+d;d=d.slice(0,11);const p=[d.slice(1,4),d.slice(4,7),d.slice(7,9),d.slice(9,11)];e.target.value=d?('+7 '+p.filter(Boolean).join(' ')).trim():''});
+const open=o=>document.body.classList.toggle('open',o);
+$('#openCart').onclick=()=>open(true);$('#mbar').onclick=()=>open(true);$('#closeCart').onclick=()=>open(false);$('#shade').onclick=()=>open(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){open(false);document.body.classList.remove('ok')}});
+function pushOrder(o){const list=store.get('kp-orders',[]);list.unshift(o);store.set('kp-orders',list.slice(0,50))}
+function newOrder(items,info){const n=store.get('kp-num',100)+1;store.set('kp-num',n);return{id:n,t:Date.now(),items,sum:items.reduce((a,l)=>a+l.q*l.p,0),st:0,...info}}
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();const err=$('#err');const ph=$('#phone').value.replace(/\D/g,'');
+  ['#phone','#addr'].forEach(s=>$(s).classList.remove('bad'));
+  if(ph.length<11){$('#phone').classList.add('bad');err.textContent='Укажите телефон, чтобы мы могли подтвердить заказ.';return}
+  if(mode==='Доставка'&&!$('#addr').value.trim()){$('#addr').classList.add('bad');err.textContent='Укажите адрес доставки.';return}
+  err.textContent='';
+  const o=newOrder(cart.map(l=>({...l})),{name:$('#name').value.trim()||'Гость',phone:$('#phone').value,mode,addr:$('#addr').value.trim(),pay,comment:$('#comment').value.trim()});
+  pushOrder(o);cart=[];renderCart();open(false);
+  $('#dnum').textContent='№ '+o.id;$('#dtext').textContent=(mode==='Доставка'?'Кухня уже готовит. Курьер привезёт по адресу: '+o.addr+'.':'Кухня уже готовит. Заберите заказ на ул. Новая, 58А.')+' Если нужно, перезвоним на '+o.phone+'.';
+  document.body.classList.add('ok');
+});
+$('#dclose').onclick=()=>document.body.classList.remove('ok');
+$('#done').addEventListener('click',e=>{if(e.target.id==='done')document.body.classList.remove('ok')});
+$('#rev').innerHTML=R.map(([t,a])=>`<figure class="rev"><span class="stars">★★★★★</span><blockquote>«${esc(t)}»</blockquote><figcaption>${esc(a)} · отзыв в 2GIS</figcaption></figure>`).join('');
+// staff panel
+const ST=[['Новый','#c8574a','Принять'],['Готовится','#cc814a','Готов'],['Готов','#3d8b5a',null],['Выдан','#7b8786',null]];
+let seen=new Set(store.get('kp-orders',[]).map(o=>o.id));
+function beep(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.setValueAtTime(.25,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+.6);o.start();o.stop(a.currentTime+.6)}catch(e){}}
+function panel(){
+  const list=store.get('kp-orders',[]);let fresh=false;
+  $('#stNew').textContent=list.filter(o=>o.st===0).length;$('#stWork').textContent=list.filter(o=>o.st===1).length;
+  const day=new Date().toDateString();$('#stSum').textContent=fmt(list.filter(o=>new Date(o.t).toDateString()===day).reduce((a,o)=>a+o.sum,0));
+  $('#orders').innerHTML=list.length?list.map(o=>{const s=ST[o.st],isNew=!seen.has(o.id);if(isNew){fresh=true;seen.add(o.id)}const tm=new Date(o.t).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+    return `<article class="ord${isNew?' new':''}" style="--st:${s[1]}"><div><h3>Заказ №${o.id}<span class="pill">${s[0]}</span></h3><div class="meta">${tm} · ${esc(o.mode)}${o.addr?': '+esc(o.addr):''} · ${esc(o.pay)} · ${esc(o.name)}</div><ul>${o.items.map(l=>`<li>${esc(l.n)}${l.v?' ('+esc(l.v)+')':''} × ${l.q}</li>`).join('')}</ul>${o.comment?`<div class="meta" style="margin-top:6px">💬 ${esc(o.comment)}</div>`:''}</div><div class="sum">${fmt(o.sum)}</div><div class="acts"><a class="tel" href="tel:${esc(o.phone.replace(/\s/g,''))}">${esc(o.phone)}</a>${s[2]?`<button data-o="${o.id}" data-n="${o.st+1}">${s[2]}</button>`:''}${o.st===2?`<button data-o="${o.id}" data-n="3">Выдан</button>`:''}</div></article>`}).join(''):'<div class="pempty">Заказов пока нет. Оформите заказ на сайте или нажмите «+ Тестовый заказ» — он появится здесь со звуком.</div>';
+  if(fresh&&document.body.classList.contains('staff'))beep();
+}
+$('#orders').addEventListener('click',e=>{const b=e.target.closest('button[data-o]');if(!b)return;const list=store.get('kp-orders',[]);const o=list.find(x=>x.id==b.dataset.o);if(o){o.st=+b.dataset.n;store.set('kp-orders',list);panel()}});
+const DEMO=[{name:'Айгерим',phone:'+7 705 123 45 67',mode:'Доставка',addr:'ул. Тимирязева, 12',pay:'Kaspi',comment:'Позвоните за 5 минут',items:[{n:'Пепперони',v:'35 см',p:3590,q:1},{n:'Крылышки',v:'10 шт',p:2490,q:1},{n:'Coca-Cola / Fanta / Sprite / Pepsi',v:'1 л',p:860,q:1}]},{name:'Ерлан',phone:'+7 777 987 65 43',mode:'Самовывоз',addr:'',pay:'Наличные',comment:'',items:[{n:'Донер с говядиной и овощами',v:'',p:2090,q:2},{n:'Картофель фри 90 г',v:'',p:700,q:2}]}];
+let di=0;$('#demoOrder').onclick=()=>{const d=DEMO[di++%DEMO.length];pushOrder(newOrder(d.items,{...d}));panel()};
+window.addEventListener('storage',e=>{if(e.key==='kp-orders')panel()});
+function route(){const s=location.hash==='#orders';document.body.classList.toggle('staff',s);if(s){panel();scrollTo(0,0)}}
+window.addEventListener('hashchange',route);
+const days=['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
+let now;try{const p=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Qostanay',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());const g=t=>p.find(x=>x.type===t).value;now={d:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(g('weekday')),m:(+g('hour')%24)*60+ +g('minute')}}catch(e){const d=new Date();now={d:(d.getDay()+6)%7,m:d.getHours()*60+d.getMinutes()}}
+$('#hours').innerHTML=days.map((d,i)=>`<tr class="${i===now.d?'today':''}"><td>${d}</td><td>${i<5?'11:00 – 22:30':'11:00 – 23:00'}</td></tr>`).join('');
+const close=now.d<5?22*60+30:23*60,isOpen=now.m>=660&&now.m<close;
+$('#status').textContent=isOpen?`Открыто до ${now.d<5?'22:30':'23:00'}`:'Закрыто · откроемся в 11:00';
+$('#dot').style.setProperty('--dot',isOpen?'#5fd17a':'#e0664f');
+grid();renderCart();route();panel();
+}
+</script>
+</body>
+</html>
